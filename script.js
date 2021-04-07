@@ -74,28 +74,14 @@ function time(){
         }
         
         temps_restant_avant_alarme = heure_restantes + " : " + minutes_restantes + " : " + seconde_restantes
-        console.log(temps_restant_avant_alarme)
-        var parent = document.getElementById('alarmes_crees')
-        var div = document.createElement('div');
-        div.setAttribute('id',"temps_restant")
-      
-        // --------------------ajout du temps restant
-        test = document.getElementById("temps_restant")
-        if(test == null)
-        {
-            div.innerHTML = "temps restant avant alarme " + temps_restant_avant_alarme ;
-            parent.appendChild(div)
-            test = document.getElementById("temps_restant").innerHTML 
-            console.log(test)
-        }
-        else{ 
-            enfant = document.getElementById("temps_restant")
-            parent.removeChild(enfant)
-            div.innerHTML = "temps restant avant alarme " + temps_restant_avant_alarme ;
-            parent.appendChild(div)
-            test = document.getElementById("temps_restant").innerHTML 
-            console.log(test)
-        }
+        
+
+  
+
+
+     
+
+
 
 
     }
@@ -106,7 +92,7 @@ function time(){
 }
 
 // lance une première fois la fonction pour ne pas avoir de page blanche pendant 1s
-time();
+ time();
 
 // continue la fonction avec 1s d'interval
 setInterval( time, 1000)
@@ -272,7 +258,7 @@ boutton_down_secondes.addEventListener('click', function(){
 // -------------------------------------------------------boutton ajout alarme
 var creer_alarme = document.getElementById("ajouter_alarme");
 
-creer_alarme.addEventListener('click', function(temps_restant_avant_alarme){
+creer_alarme.addEventListener('click', function(){
     console.log('bouttton clicke')
     var heure = document.getElementById("heure_origine").innerHTML;
     var minutes = document.getElementById("minute_origine").innerHTML;
@@ -286,6 +272,11 @@ creer_alarme.addEventListener('click', function(temps_restant_avant_alarme){
     div.className = "div1";
     div.innerHTML = heure + " : " + minutes + " : " + secondes ;
     parent.appendChild(div)
+
+
+
+
+    // ----ajout message caché
     var message = document.createElement('p');
     message.className = "message_cache";
     message.innerHTML = details;
