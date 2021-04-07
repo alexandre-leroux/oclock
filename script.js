@@ -1,34 +1,6 @@
 
 
-function time(){
-    date = new Date();
-    heure = date.getHours();
-    minutes = date.getMinutes();
-    secondes = date.getSeconds();
-    
-    if(secondes<10)
-    {
-        secondes = ""+0+secondes
-    }
-    if(minutes<10)
-    {
-       minutes = ""+0+minutes
-    }
-    
-    horloge = `${heure} : ${minutes} : ${secondes}`
-    
-    document.getElementById("heure").innerText = horloge 
 
-
-
-}
-
-time();
-
-
-
-
-setInterval( time, 1000)
 
 
 
@@ -154,3 +126,78 @@ boutton_down_secondes.addEventListener('click', function(){
     document.getElementById("seconde_origine").innerText = secondes_moins_une 
 
 })
+
+
+
+// -------------------------------------------------------boutton ajout alarme
+var creer_alarme = document.getElementById("ajouter_alarme");
+
+creer_alarme.addEventListener('click', function(){
+    console.log('bouttton clicke')
+    var heure = document.getElementById("heure_origine").innerHTML;
+    var minutes = document.getElementById("minute_origine").innerHTML;
+    var secondes = document.getElementById("seconde_origine").innerHTML;
+    var details = document.getElementById("details_alarme").value;
+    document.getElementById("details_alarme").value ="";
+
+    console.log(heure)
+    console.log(minutes)
+    console.log(secondes)
+    console.log(details)
+
+
+    var parent = document.getElementById('alarmes_crees')
+    var div = document.createElement('div');
+    div.className = "div1";
+    div.innerHTML = heure + " : " + minutes + " : " + secondes ;
+    parent.appendChild(div)
+})
+
+
+
+// -----------------------------------horloge
+function time(){
+    date = new Date();
+    heure = date.getHours();
+    minutes = date.getMinutes();
+    secondes = date.getSeconds();
+    
+    if(secondes<10)
+    {
+        secondes = ""+0+secondes
+    }
+    if(minutes<10)
+    {
+       minutes = ""+0+minutes
+    }
+    
+    horloge = `${heure} : ${minutes} : ${secondes}`
+    
+    document.getElementById("heure").innerText = horloge 
+
+    // -------recupère les horloges ajoutée
+    var parentDOM = document.getElementById("alarmes_crees");
+    var test=parentDOM.getElementsByClassName("div1");
+    console.log(test.length);
+ 
+    // ----boucle pour comparer la valeur de l'horloge aux alarmes
+    for(   i = 0; i<test.length; i++ )
+    {
+        if(horloge == test[i].innerHTML)
+        {
+            alert('c\'est l\'heure')
+        }
+        console.log(test[i].innerHTML) 
+        console.log(horloge) 
+        // console.log(test[1]) 
+    }
+
+
+}
+
+time();
+
+
+setInterval( time, 1000)
+
+
