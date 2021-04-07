@@ -18,9 +18,23 @@ console.log(a)
 
 
 setInterval(function(){
-    let d = new Date();
-document.getElementById("heure").innerText = d
+
+     date = new Date();
+     jour = date.getDate();
+     mois = date.getMonth();
+     annee = date.getFullYear();
+     heure = date.getHours();
+     minutes = date.getMinutes();
+     secondes = date.getSeconds();
+
+     horloge = `${heure} : ${minutes} : ${secondes}`
+
+document.getElementById("heure").innerText = horloge 
   
-    console.log(d);
+    console.log(date);
+    console.log("" + jour + mois);
+
+    x = `${jour} ${mois}`
+    console.log(x)
 },1000)
 
