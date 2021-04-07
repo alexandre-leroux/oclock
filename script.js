@@ -89,7 +89,8 @@ function time(){
             console.log(test)
         }
         else{ 
-            $("#temps_restant").remove();
+            enfant = document.getElementById("temps_restant")
+            parent.removeChild(enfant)
             div.innerHTML = "temps restant avant alarme " + temps_restant_avant_alarme ;
             parent.appendChild(div)
             test = document.getElementById("temps_restant").innerHTML 
