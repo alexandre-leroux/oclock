@@ -176,6 +176,10 @@ creer_alarme.addEventListener('click', function(){
     div.className = "div1";
     div.innerHTML = heure + " : " + minutes + " : " + secondes ;
     parent.appendChild(div)
+    var message = document.createElement('p');
+    message.className = "message_cache";
+    message.innerHTML = details;
+    parent.appendChild(message)
 })
 
 
@@ -183,7 +187,7 @@ creer_alarme.addEventListener('click', function(){
 // -----------------------------------horloge
 function time(){
     date = new Date();
-    console.log(date)
+    // console.log(date)
     heure = date.getHours();
     minutes = date.getMinutes();
     secondes = date.getSeconds();
@@ -197,26 +201,72 @@ function time(){
        minutes = ""+0+minutes
     }
     
-    horloge = `${heure} : ${minutes} : ${secondes}`
+    // horloge = `${heure} : ${minutes} : ${secondes}`
+    horloge = heure + " : " + minutes + " : " + secondes
+    // console.log(horloge)
     
-    document.getElementById("heure").innerText = horloge 
+    
 
     // -------recupère les horloges ajoutée
     var parentDOM = document.getElementById("alarmes_crees");
-    var test=parentDOM.getElementsByClassName("div1");
-    console.log(test.length);
+    var alarme_utilisateur=parentDOM.getElementsByClassName("div1");
+    var message_utilisateur=parentDOM.getElementsByClassName("message_cache");
+
+    // console.log(alarme_utilisateur.length);
  
     // ----boucle pour comparer la valeur de l'horloge aux alarmes
-    for(   i = 0; i<test.length; i++ )
+    for(   i = 0; i<alarme_utilisateur.length; i++ )
     {
-        if(horloge == test[i].innerHTML)
+        if(horloge == alarme_utilisateur[i].innerHTML)
         {
-            alert('c\'est l\'heure')
+            alarme_utilisateur[i].classList.add("alarme_check","animate__animated", "animate__flash");
+            message_utilisateur[i].classList.remove("message_cache");
+            message_utilisateur[i].classList.add("message_apparait");
         }
-        console.log(test[i].innerHTML) 
-        console.log(horloge) 
-    }
 
+        // recuperation des heure/minute/seconde pour comparer
+        alarme_utilisateur_formatee = alarme_utilisateur[i].innerHTML
+        temps = alarme_utilisateur_formatee.split(' : ')
+        temps_reel = horloge.split(' : ');
+
+        heure_restantes =  temps[0] - temps_reel[0];
+        minutes_restantes =  temps[1] - temps_reel[1];
+
+        if(temps[1]<temps_reel[1])
+        {
+            var minutes = parseInt( temps[1],10);
+            minutes = minutes + 60
+       
+            minutes_restantes =  minutes - temps_reel[1];
+        }
+        else{
+
+            minutes_restantes =  temps[1] - temps_reel[1];
+        }
+
+        if(temps[2]<temps_reel[2])
+        {
+            seconde = temps[2]
+            var seconde_2 = parseInt(seconde,10);
+            seconde_2 = seconde_2 + 60
+            seconde_restantes =  seconde_2 - temps_reel[2];
+            minutes_restantes = minutes_restantes -1
+
+        }
+        else{
+
+            seconde_restantes =  temps[2] - temps_reel[2];
+        }
+        
+        temps_restant_avant_alarme = heure_restantes + " : " + minutes_restantes + " : " + seconde_restantes
+        console.log(temps_restant_avant_alarme)
+
+
+
+    }
+    
+
+    document.getElementById("heure").innerText = horloge 
 
 }
 

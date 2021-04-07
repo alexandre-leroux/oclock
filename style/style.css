@@ -39,3 +39,20 @@ font-size: 2rem;
 
 
 }
+
+
+.alarme_check{
+    font-size: 3rem;
+    color: red;
+}
+.animate__animated.animate__flash {
+    animation-iteration-count: infinite;
+  }
+
+
+ .message_cache{
+     display: none;
+ }
+ .message_apparait{
+     display: block;
+ }
