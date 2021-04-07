@@ -170,12 +170,7 @@ creer_alarme.addEventListener('click', function(){
     var details = document.getElementById("details_alarme").value;
     document.getElementById("details_alarme").value ="";
 
-    console.log(heure)
-    console.log(minutes)
-    console.log(secondes)
-    console.log(details)
-
-
+    // ----ajout d'une div avec 'div1' comme classe, dans "alarmes_crees"
     var parent = document.getElementById('alarmes_crees')
     var div = document.createElement('div');
     div.className = "div1";
@@ -220,15 +215,15 @@ function time(){
         }
         console.log(test[i].innerHTML) 
         console.log(horloge) 
-        // console.log(test[1]) 
     }
 
 
 }
 
+// lance une première fois la fonction pour ne pas avoir de page blanche pendant 1s
 time();
 
-
+// continue la fonction avec 1s d'interval
 setInterval( time, 1000)
 
 
