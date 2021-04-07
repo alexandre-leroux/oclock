@@ -18,6 +18,9 @@ function time(){
     horloge = `${heure} : ${minutes} : ${secondes}`
     
     document.getElementById("heure").innerText = horloge 
+
+
+
 }
 
 time();
@@ -26,6 +29,10 @@ time();
 
 
 setInterval( time, 1000)
+
+
+
+
 
 
 

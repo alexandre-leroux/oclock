@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#conteneur_compteur{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#conteneur_compteur input{
+   height: 20px;
+}
+
+.compteur{
+    /* background-color: aquamarine; */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+}
+
+
+
+.compteur img{
+    display: block;
+    width: 10px;
+    height: 10px;
+    /* background-color: rgb(236, 255, 127) */
+
+
+}
+.compteur p{
+
+font-size: 2rem;
+/* background-color: rgb(255, 127, 180); */
+
+
+}
