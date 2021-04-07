@@ -54,7 +54,7 @@ boutton_up_minutes.addEventListener('click', function(){
 
     var minute_origine = document.getElementById("minute_origine").innerHTML;
     parseInt(minute_origine, 10);
-    console.log(minute_origine)
+
     if(minute_origine==59)
     {
         minutes_plus_une = 0;
@@ -63,7 +63,14 @@ boutton_up_minutes.addEventListener('click', function(){
     {
         var minutes_plus_une = ++minute_origine;
     }
-    document.getElementById("minute_origine").innerText = minutes_plus_une 
+    if (minutes_plus_une<10)
+    {
+        document.getElementById("minute_origine").innerText = "0"+minutes_plus_une 
+    }
+    else
+    {
+        document.getElementById("minute_origine").innerText = minutes_plus_une 
+    }
 
 })
 
@@ -74,7 +81,6 @@ boutton_down_minutes.addEventListener('click', function(){
 
     var minute_origine = document.getElementById("minute_origine").innerHTML;
     parseInt(minute_origine, 10);
-    console.log(minute_origine)
     if(minute_origine==0)
     {
         minutes_moins_une = 59;
@@ -83,7 +89,15 @@ boutton_down_minutes.addEventListener('click', function(){
     {
         var minutes_moins_une = --minute_origine;
     }
-    document.getElementById("minute_origine").innerText = minutes_moins_une 
+
+    if (minutes_moins_une<10)
+    {
+        document.getElementById("minute_origine").innerText = "0"+minutes_moins_une 
+    }
+    else
+    {
+        document.getElementById("minute_origine").innerText = minutes_moins_une 
+    }
 
 })
 
@@ -94,7 +108,7 @@ boutton_up_secondes.addEventListener('click', function(){
 
     var seconde_origine = document.getElementById("seconde_origine").innerHTML;
     parseInt(seconde_origine, 10);
-    console.log(seconde_origine)
+
     if(seconde_origine==59)
     {
         secondes_plus_une = 0;
@@ -103,7 +117,15 @@ boutton_up_secondes.addEventListener('click', function(){
     {
         var secondes_plus_une = ++seconde_origine;
     }
-    document.getElementById("seconde_origine").innerText = secondes_plus_une 
+
+    if (secondes_plus_une<10)
+    {
+        document.getElementById("seconde_origine").innerText = "0"+secondes_plus_une 
+    }
+    else
+    {
+        document.getElementById("seconde_origine").innerText = secondes_plus_une 
+    }
 
 })
 
@@ -114,7 +136,7 @@ boutton_down_secondes.addEventListener('click', function(){
 
     var seconde_origine = document.getElementById("seconde_origine").innerHTML;
     parseInt(seconde_origine, 10);
-    console.log(seconde_origine)
+
     if(seconde_origine==0)
     {
         secondes_moins_une = 59;
@@ -123,7 +145,15 @@ boutton_down_secondes.addEventListener('click', function(){
     {
         var secondes_moins_une = --seconde_origine;
     }
-    document.getElementById("seconde_origine").innerText = secondes_moins_une 
+
+    if (secondes_moins_une<10)
+    {
+        document.getElementById("seconde_origine").innerText = "0"+secondes_moins_une 
+    }
+    else
+    {
+        document.getElementById("seconde_origine").innerText = secondes_moins_une 
+    }
 
 })
 
@@ -158,6 +188,7 @@ creer_alarme.addEventListener('click', function(){
 // -----------------------------------horloge
 function time(){
     date = new Date();
+    console.log(date)
     heure = date.getHours();
     minutes = date.getMinutes();
     secondes = date.getSeconds();
