@@ -1,40 +1,31 @@
 
 
+function time(){
+    date = new Date();
+    heure = date.getHours();
+    minutes = date.getMinutes();
+    secondes = date.getSeconds();
+    
+    if(secondes<10)
+    {
+        secondes = ""+0+secondes
+    }
+    if(minutes<10)
+    {
+       minutes = ""+0+minutes
+    }
+    
+    horloge = `${heure} : ${minutes} : ${secondes}`
+    
+    document.getElementById("heure").innerText = horloge 
+}
+
+time();
 
 
 
 
+setInterval( time, 1000)
 
 
-
-let d = new Date();
-
-console.log(d)
-
-let a = d.getDate()
-
-console.log(a)
-
-
-
-setInterval(function(){
-
-     date = new Date();
-     jour = date.getDate();
-     mois = date.getMonth();
-     annee = date.getFullYear();
-     heure = date.getHours();
-     minutes = date.getMinutes();
-     secondes = date.getSeconds();
-
-     horloge = `${heure} : ${minutes} : ${secondes}`
-
-document.getElementById("heure").innerText = horloge 
-  
-    console.log(date);
-    console.log("" + jour + mois);
-
-    x = `${jour} ${mois}`
-    console.log(x)
-},1000)
 
