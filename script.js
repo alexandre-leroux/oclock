@@ -2,7 +2,10 @@
 
 
 
-
+var date
+var alarme_parse
+var creer_alarme
+var decompte
 
 // -----------------------------------horloge
 function time(){
@@ -12,27 +15,33 @@ function time(){
     minutes = date.getMinutes();
     secondes = date.getSeconds();
     
-
-    
     horloge = heure + " : " + minutes + " : " + secondes
     document.getElementById("heure").innerText = horloge 
     
-    date_parse = Date.parse(date)
-    temps_restant = alarme_parse - date_parse
-
-    console.log(date_parse)
-    console.log(alarme_parse)
-    console.log(temps_restant)
 
 
-    seconde_restantes = (temps_restant/1000)%60
-    console.log(Math.floor(seconde_restantes))
 
-    minutes_restantes = (temps_restant/1000/60)%60
-    console.log(Math.floor(minutes_restantes))
+    i = 0
+    while( document.getElementById("div"+i+"") != null)
+    {
+        alarme_origine = document.getElementById("temps_milli"+i+"").innerHTML
 
-    heures_restantes = (temps_restant/1000/60/60)%24
-    console.log(Math.floor(heures_restantes))
+        date_parse = Date.parse(date)
+        temps_restant = alarme_origine - date_parse
+    
+        seconde_restantes = Math.floor((temps_restant/1000)%60)
+    
+        minutes_restantes = Math.floor((temps_restant/1000/60)%60)
+    
+        heures_restantes = Math.floor((temps_restant/1000/60/60)%24)
+    
+        decompte = heures_restantes + " : " + minutes_restantes + " : " + seconde_restantes
+
+        document.getElementById("div"+i+"").innerHTML = ""
+        document.getElementById("div"+i+"").innerHTML = decompte
+
+        i++
+    }
 
 }
 
@@ -47,22 +56,64 @@ setInterval( time, 1000)
 
 // -------------------------------------------------------boutton ajout alarme
 
-var creer_alarme = document.getElementById("ajouter_alarme");
-
-var alarme_parse
+creer_alarme = document.getElementById("ajouter_alarme");
 
 creer_alarme.addEventListener('click', function(){
 
     alarme = new Date();
 
-    alarme.setHours(17)
-    alarme.setMinutes(10)
-    alarme.setSeconds(56)
+    heure_user = document.getElementById("heure_origine").innerHTML
+    alarme.setHours(heure_user)
 
-    date_parse = Date.parse(date)
+    minutes_user = document.getElementById("minute_origine").innerHTML
+    alarme.setMinutes(minutes_user)
+
+    secondes_user = document.getElementById("seconde_origine").innerHTML
+    alarme.setSeconds(secondes_user)
+
+    // date_parse = Date.parse(date)
     console.log('clikkkkk')
+    console.log(alarme)
 
     alarme_parse = Date.parse(alarme)
+    // console.log(alarme_parse)
+
+
+   
+    i = 0
+    while( document.getElementById("div"+i+"") != null)
+    {
+      i ++
+      console.log('dans while')
+    }
+
+    date_parse = Date.parse(date)
+
+    temps_restant = alarme_parse - date_parse
+
+    seconde_restantes = Math.floor((temps_restant/1000)%60)
+
+    minutes_restantes = Math.floor((temps_restant/1000/60)%60)
+
+    heures_restantes = Math.floor((temps_restant/1000/60/60)%24)
+
+    decompte = heures_restantes + " : " + minutes_restantes + " : " + seconde_restantes
+
+
+    parent = document.getElementById("alarmes_crees")
+
+    temps_milliseconde = document.createElement('div');
+    temps_milliseconde.setAttribute("id", "temps_milli"+i+"");
+    temps_milliseconde.setAttribute("style", "display: none");
+    temps_milliseconde.innerHTML = alarme_parse
+    parent.insertBefore(temps_milliseconde, parent.children[0]);
+
+
+
+    new_alarme = document.createElement('div');
+    new_alarme.setAttribute("id", "div"+i+"");
+    new_alarme.innerHTML = decompte
+    parent.insertBefore(new_alarme, parent.children[0]);
 
 
 })
