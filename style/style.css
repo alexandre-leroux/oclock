@@ -2,14 +2,46 @@
     margin: 0px;
     padding: 0px;
 }
+body{
+    height: 100vh;
+    width: 100vw;
+}
+#main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#heure{
+    font-size: 8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    /* margin-top: 20vh; */
+}
 
 #conteneur_compteur{
     display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    color: rgb(62, 119, 121);
+    border-top: 1px solid rgb(211, 211, 211);
+    width: 25vw;
+    padding-top: 20px;
+
+}
+#compteur_pour_choix{
+    display: flex;
+    margin: 10px;
 }
 #conteneur_compteur input{
    height: 20px;
+}
+#ajouter_alarme{
+    margin-bottom: 50px;
 }
 
 .compteur{
@@ -21,13 +53,25 @@
     justify-content: space-around;
     align-items:center;
 }
+#alarmes_crees{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.alarme_origine_dur{
+    margin-bottom: 10px;
+}
+.decompte{
+    font-size: 0.72rem;
+    color: blue;
+}
 
 
 
 .compteur img{
     display: block;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     /* background-color: rgb(236, 255, 127) */
 
 
@@ -60,10 +104,16 @@ font-size: 2rem;
 
 
  #alarme_sonne{
-    font-size: 2rem;
+    font-size: 4rem;
     color: red;
+    text-align: center;
  }
- .alarme_cachee{
-    display: none;
+ #message_alarme{
+     text-align: center;
+     margin-bottom: 50px;
+ }
 
- }
+
+
+
+ 

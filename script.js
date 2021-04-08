@@ -34,7 +34,7 @@ function time(){
         {
             message_a_afficher = document.getElementById("message_cache"+i+"").innerHTML
             document.getElementById("message_alarme").innerHTML = message_a_afficher
-            document.getElementById("alarme_sonne").removeAttribute("class")
+            document.getElementById("alarme_sonne").removeAttribute("style")
             document.getElementById("div"+i+"").innerHTML = "00 : 00 : 00 alarme terminée"
             i++
         }
@@ -117,6 +117,7 @@ creer_alarme.addEventListener('click', function(){
 
     alarme_fixe_origine = document.createElement("div");
     alarme_fixe_origine.setAttribute('id', "alarme_origine_dur"+i+"")
+    alarme_fixe_origine.setAttribute('class', "alarme_origine_dur")
     alarme_fixe_origine.innerHTML = alarme_de_base
     parent.insertBefore(alarme_fixe_origine, parent.children[0]);
 
@@ -137,8 +138,7 @@ creer_alarme.addEventListener('click', function(){
 
     new_alarme = document.createElement('div');
     new_alarme.setAttribute("id", "div"+i+"");
-    new_alarme.setAttribute("style", "font-size: 0.7rem");
-    new_alarme.setAttribute("style", "color: blue");
+    new_alarme.setAttribute("class", "decompte");
     new_alarme.innerHTML = decompte
     parent.insertBefore(new_alarme, parent.children[0]);
 

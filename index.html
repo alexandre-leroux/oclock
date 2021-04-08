@@ -13,37 +13,41 @@
 <main id="main">
 
 
-
+<div id="alarme_sonne" style="display: none" class='animate__animated animate__flash '>ALARME</div>
+<div id="message_alarme"></div>
 
 <div id="heure"></div>
 
 <div id="conteneur_compteur">
-
-    <div class="compteur">
-        <img id="ajouter_heure" src="media/566000-navigation/png/014-up-chevron.png" alt="">
-        <p id="heure_origine">18</p>
-        <img id="enlever_heure" src="media/566000-navigation/png/013-down-chevron.png" alt="">
-    </div>
-
-    <div class="compteur">
-        <img id="ajouter_minute" src="media/566000-navigation/png/014-up-chevron.png" alt="">
-        <p id="minute_origine">18</p>
-        <img id="enlever_minute" src="media/566000-navigation/png/013-down-chevron.png" alt="">
-    </div>
-
-    <div class="compteur">
-        <img id="ajouter_seconde" src="media/566000-navigation/png/014-up-chevron.png" alt="">
-        <p id="seconde_origine">23</p>
-        <img id="enlever_seconde" src="media/566000-navigation/png/013-down-chevron.png" alt="">
+    <h1>AJOUTER UNE ALARME</h1>
+    <div id="compteur_pour_choix">
+        <div class="compteur">
+            <img id="ajouter_heure" src="media/566000-navigation/png/014-up-chevron.png" alt="">
+            <p id="heure_origine">20</p>
+            <img id="enlever_heure" src="media/566000-navigation/png/013-down-chevron.png" alt="">
+        </div>
+    
+        <div class="compteur">
+            <img id="ajouter_minute" src="media/566000-navigation/png/014-up-chevron.png" alt="">
+            <p id="minute_origine">32</p>
+            <img id="enlever_minute" src="media/566000-navigation/png/013-down-chevron.png" alt="">
+        </div>
+    
+        <div class="compteur">
+            <img id="ajouter_seconde" src="media/566000-navigation/png/014-up-chevron.png" alt="">
+            <p id="seconde_origine">23</p>
+            <img id="enlever_seconde" src="media/566000-navigation/png/013-down-chevron.png" alt="">
+        </div>
     </div>
     <label for="details_alarme">détails de l'alarme :</label>
     <input type="text" id="details_alarme" name="details_alarme" >
 
         <button id="ajouter_alarme">ajouter alarme</button>
+
+     <p>LISTE DES PROCHAINES ALARMES :</p>   
 </div>
 
-<div id="alarme_sonne" class='alarme_cachee'>ALARME</div>
-<div id="message_alarme"></div>
+
 
 
 <div id="alarmes_crees"></div>
