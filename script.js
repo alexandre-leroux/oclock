@@ -1,5 +1,9 @@
 
 
+
+
+
+
 // -----------------------------------horloge
 function time(){
     date = new Date();
@@ -8,45 +12,27 @@ function time(){
     minutes = date.getMinutes();
     secondes = date.getSeconds();
     
-    if(secondes<10)
-    {
-        secondes = ""+0+secondes
-    }
-    if(minutes<10)
-    {
-       minutes = ""+0+minutes
-    }
+
     
     horloge = heure + " : " + minutes + " : " + secondes
     document.getElementById("heure").innerText = horloge 
     
-    // compte le nombre d'enfants du conteneur des alarmes ajoutée
-    conteneur_alarmes = document.getElementById("alarmes_crees")
-    var longueur_conteneur_alarmes= conteneur_alarmes.childNodes;
+    date_parse = Date.parse(date)
+    temps_restant = alarme_parse - date_parse
 
-  
-        for(i=1; i<=longueur_conteneur_alarmes.length; i++)
-        {
-            conteneur_alarme = document.getElementById(""+i+"")
-            console.log(conteneur_alarme)
+    console.log(date_parse)
+    console.log(alarme_parse)
+    console.log(temps_restant)
 
-            alarme_decompte = conteneur_alarme.getElementsByTagName("span")
-            // console.log(alarme_decompte[0].innerHTML)
 
-            if(alarme_decompte[0].innerHTML == horloge)
-            {
-                parent = document.getElementById('main')
-                console.log(parent)
-                div_alarme = document.createElement('div');
-                div_alarme.setAttribute('id', 'alarme_sonne')
-                div_alarme.innerHTML = "ALARME"
-                // parent.appendChild(div_alarme)
+    seconde_restantes = (temps_restant/1000)%60
+    console.log(Math.floor(seconde_restantes))
 
-                parent.insertBefore(div_alarme, parent.children[1]);
-            }
+    minutes_restantes = (temps_restant/1000/60)%60
+    console.log(Math.floor(minutes_restantes))
 
-        }
-
+    heures_restantes = (temps_restant/1000/60/60)%24
+    console.log(Math.floor(heures_restantes))
 
 }
 
@@ -59,81 +45,43 @@ setInterval( time, 1000)
 
 
 
-
-function decompte_seconde(){
-
-    i=1
-    while(document.getElementById(""+i+"") != null)
-    {
-        if(document.getElementById(""+i+"") != null)
-        {
-            decompte_minutes = document.getElementById("secondes"+i+"").innerHTML
-            console.log(decompte_minutes)
-            minutes_int = parseInt(decompte_minutes)
-            document.getElementById("secondes"+i+"").innerHTML = --decompte_minutes
-
-        }
-        i++
-    }
-
-
-    
-}
-setInterval( decompte_seconde, 1000)
-
-
 // -------------------------------------------------------boutton ajout alarme
 
 var creer_alarme = document.getElementById("ajouter_alarme");
 
+var alarme_parse
+
 creer_alarme.addEventListener('click', function(){
 
-    var heure = document.getElementById("heure_origine").innerHTML;
-    var minutes = document.getElementById("minute_origine").innerHTML;
-    var secondes = document.getElementById("seconde_origine").innerHTML;
-    var details = document.getElementById("details_alarme").value;
-    document.getElementById("details_alarme").value ="";
+    alarme = new Date();
 
-    i=1
-    while(document.getElementById(""+i+"") != null)
-    {
-        i++
-        console.log('ici')
-    }
+    alarme.setHours(17)
+    alarme.setMinutes(10)
+    alarme.setSeconds(56)
 
-    var parent = document.getElementById('alarmes_crees')
-    // ajout d'une div avec id dans la div parent
-    div_alarme_cree = document.createElement('div');
-    div_alarme_cree.setAttribute("id", ""+i+"");
-    div_alarme_cree.innerHTML = heure + " : " + minutes + " : " + secondes ;
-    parent.appendChild(div_alarme_cree)
+    date_parse = Date.parse(date)
+    console.log('clikkkkk')
+
+    alarme_parse = Date.parse(alarme)
 
 
-    var parent = document.getElementById(""+i+"")
-    // ajout d'éléments dans la div avec id créée au dessus 
-    p_details_utilisateur = document.createElement('p');
-    p_details_utilisateur.innerHTML = details
-    parent.appendChild(p_details_utilisateur)
-
-    titre_decompte = document.createElement('h2');
-    titre_decompte.innerHTML = "temps avant alarme : " ;
-    parent.appendChild(titre_decompte)
-
-    compte_a_rebours_heures = document.createElement('span');
-    compte_a_rebours_heures.setAttribute('id', 'heures')
-    compte_a_rebours_heures.innerHTML = heure 
-    parent.appendChild(compte_a_rebours_heures)
-    
-    compte_a_rebours_minutes = document.createElement('span');
-    compte_a_rebours_minutes.setAttribute('id', "minutes"+i+"")
-    compte_a_rebours_minutes.innerHTML =  minutes 
-    parent.appendChild(compte_a_rebours_minutes)
-    
-    compte_a_rebours_secondes = document.createElement('span');
-    compte_a_rebours_secondes.setAttribute('id', "secondes"+i+"")
-    compte_a_rebours_secondes.innerHTML = secondes ;
-    parent.appendChild(compte_a_rebours_secondes)
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -196,14 +144,9 @@ boutton_up_minutes.addEventListener('click', function(){
     {
         var minutes_plus_une = ++minute_origine;
     }
-    if (minutes_plus_une<10)
-    {
-        document.getElementById("minute_origine").innerText = "0"+minutes_plus_une 
-    }
-    else
-    {
-        document.getElementById("minute_origine").innerText = minutes_plus_une 
-    }
+
+    document.getElementById("minute_origine").innerText = minutes_plus_une 
+
 
 })
 
@@ -223,14 +166,8 @@ boutton_down_minutes.addEventListener('click', function(){
         var minutes_moins_une = --minute_origine;
     }
 
-    if (minutes_moins_une<10)
-    {
-        document.getElementById("minute_origine").innerText = "0"+minutes_moins_une 
-    }
-    else
-    {
-        document.getElementById("minute_origine").innerText = minutes_moins_une 
-    }
+    document.getElementById("minute_origine").innerText = minutes_moins_une 
+
 
 })
 
@@ -251,14 +188,9 @@ boutton_up_secondes.addEventListener('click', function(){
         var secondes_plus_une = ++seconde_origine;
     }
 
-    if (secondes_plus_une<10)
-    {
-        document.getElementById("seconde_origine").innerText = "0"+secondes_plus_une 
-    }
-    else
-    {
-        document.getElementById("seconde_origine").innerText = secondes_plus_une 
-    }
+    document.getElementById("seconde_origine").innerText = secondes_plus_une 
+
+        
 
 })
 
@@ -279,13 +211,10 @@ boutton_down_secondes.addEventListener('click', function(){
         var secondes_moins_une = --seconde_origine;
     }
 
-    if (secondes_moins_une<10)
-    {
-        document.getElementById("seconde_origine").innerText = "0"+secondes_moins_une 
-    }
-    else
-    {
-        document.getElementById("seconde_origine").innerText = secondes_moins_une 
-    }
+
+    document.getElementById("seconde_origine").innerText = secondes_moins_une 
+ 
 
 })
+
+
