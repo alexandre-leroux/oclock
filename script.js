@@ -82,9 +82,7 @@ creer_alarme.addEventListener('click', function(){
     secondes_user = document.getElementById("seconde_origine").innerHTML
     alarme.setSeconds(secondes_user)
 
-    // date_parse = Date.parse(date)
-    console.log('clikkkkk')
-    console.log(alarme)
+    alarme_de_base = heure_user + " : " + minutes_user + " : " + secondes_user
 
     alarme_parse = Date.parse(alarme)
     // console.log(alarme_parse)
@@ -113,6 +111,12 @@ creer_alarme.addEventListener('click', function(){
 
     parent = document.getElementById("alarmes_crees")
 
+    alarme_fixe_origine = document.createElement("div");
+    alarme_fixe_origine.setAttribute('id', "alarme_origine_dur"+i+"")
+    alarme_fixe_origine.innerHTML = alarme_de_base
+    parent.insertBefore(alarme_fixe_origine, parent.children[0]);
+
+    
     temps_milliseconde = document.createElement('div');
     temps_milliseconde.setAttribute("id", "temps_milli"+i+"");
     temps_milliseconde.setAttribute("style", "display: none");
@@ -123,6 +127,8 @@ creer_alarme.addEventListener('click', function(){
 
     new_alarme = document.createElement('div');
     new_alarme.setAttribute("id", "div"+i+"");
+    new_alarme.setAttribute("style", "font-size: 0.8rem");
+    new_alarme.setAttribute("style", "color: blue");
     new_alarme.innerHTML = decompte
     parent.insertBefore(new_alarme, parent.children[0]);
 
