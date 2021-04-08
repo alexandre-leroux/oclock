@@ -17,69 +17,29 @@ function time(){
        minutes = ""+0+minutes
     }
     
-    // horloge = `${heure} : ${minutes} : ${secondes}`
     horloge = heure + " : " + minutes + " : " + secondes
-    // console.log(horloge)
-    
     document.getElementById("heure").innerText = horloge 
-
-    // -------recupère les horloges ajoutée
-    var parentDOM = document.getElementById("alarmes_crees");
-    var alarme_utilisateur=parentDOM.getElementsByClassName("div1");
-    var message_utilisateur=parentDOM.getElementsByClassName("message_cache");
-
-    // console.log(alarme_utilisateur.length);
- 
-    // ----boucle pour comparer la valeur de l'horloge aux alarmes
-    for(   i = 0; i<alarme_utilisateur.length; i++ )
-    {
-        if(horloge == alarme_utilisateur[i].innerHTML)
-        {
-            alarme_utilisateur[i].classList.add("alarme_check","animate__animated", "animate__flash");
-            message_utilisateur[i].classList.remove("message_cache");
-            message_utilisateur[i].classList.add("message_apparait");
-        }
-
-        // recuperation des heure/minute/seconde pour comparer
-        alarme_utilisateur_formatee = alarme_utilisateur[i].innerHTML
-        temps = alarme_utilisateur_formatee.split(' : ')
-        temps_reel = horloge.split(' : ');
-
-        heure_restantes =  temps[0] - temps_reel[0];
-        minutes_restantes =  temps[1] - temps_reel[1];
-
-        if(temps[1]<temps_reel[1])
-        {
-            var minutes = parseInt( temps[1],10);
-            minutes = minutes + 60
-       
-            minutes_restantes =  minutes - temps_reel[1];
-        }
-        else{
-
-            minutes_restantes =  temps[1] - temps_reel[1];
-        }
-
-        if(temps[2]<temps_reel[2])
-        {
-            seconde = temps[2]
-            var seconde_2 = parseInt(seconde,10);
-            seconde_2 = seconde_2 + 60
-            seconde_restantes =  seconde_2 - temps_reel[2];
-            minutes_restantes = minutes_restantes -1
-        }
-        else{
-
-            seconde_restantes =  temps[2] - temps_reel[2];
-        }
-        
-        temps_restant_avant_alarme = heure_restantes + " : " + minutes_restantes + " : " + seconde_restantes
-        
-
-    }
     
+    // compte le nombre d'enfants du conteneur des alarmes ajoutée
+    conteneur_alarmes = document.getElementById("alarmes_crees")
+    var longueur_conteneur_alarmes= conteneur_alarmes.childNodes;
 
-    
+  
+        for(i=1; i<=longueur_conteneur_alarmes.length; i++)
+        {
+            conteneur_alarme = document.getElementById(""+i+"")
+            console.log(conteneur_alarme)
+
+            alarme_decompte = conteneur_alarme.getElementsByTagName("span")
+            console.log(alarme_decompte[0].innerHTML)
+
+            if(alarme_decompte[0].innerHTML == horloge)
+            {
+                alert('alarme')
+            }
+
+        }
+
 
 }
 
@@ -89,6 +49,53 @@ time();
 // continue la fonction avec 1s d'interval
 setInterval( time, 1000)
 
+
+
+
+
+// -------------------------------------------------------boutton ajout alarme
+
+var creer_alarme = document.getElementById("ajouter_alarme");
+
+creer_alarme.addEventListener('click', function(){
+
+    var heure = document.getElementById("heure_origine").innerHTML;
+    var minutes = document.getElementById("minute_origine").innerHTML;
+    var secondes = document.getElementById("seconde_origine").innerHTML;
+    var details = document.getElementById("details_alarme").value;
+    document.getElementById("details_alarme").value ="";
+
+    i=1
+    while(document.getElementById(""+i+"") != null)
+    {
+        i++
+        console.log('ici')
+    }
+
+    var parent = document.getElementById('alarmes_crees')
+    // ajout d'une div avec id dans la div parent
+    div_alarme_cree = document.createElement('div');
+    div_alarme_cree.setAttribute("id", ""+i+"");
+    div_alarme_cree.innerHTML = heure + " : " + minutes + " : " + secondes ;
+    parent.appendChild(div_alarme_cree)
+
+
+    var parent = document.getElementById(""+i+"")
+    // ajout d'éléments dans la div avec id créée au dessus 
+    p_details_utilisateur = document.createElement('p');
+    p_details_utilisateur.innerHTML = details
+    parent.appendChild(p_details_utilisateur)
+
+    titre_decompte = document.createElement('h2');
+    titre_decompte.innerHTML = "temps avant alarme : " ;
+    parent.appendChild(titre_decompte)
+
+    compte_a_rebours = document.createElement('span');
+    compte_a_rebours.innerHTML = heure + " : " + minutes + " : " + secondes ;
+    parent.appendChild(compte_a_rebours)
+
+
+})
 
 
 
@@ -242,77 +249,5 @@ boutton_down_secondes.addEventListener('click', function(){
     {
         document.getElementById("seconde_origine").innerText = secondes_moins_une 
     }
-
-})
-
-
-
-// -------------------------------------------------------boutton ajout alarme
-// var creer_alarme = document.getElementById("ajouter_alarme");
-
-// creer_alarme.addEventListener('click', function(){
-//     console.log('bouttton clicke')
-//     var heure = document.getElementById("heure_origine").innerHTML;
-//     var minutes = document.getElementById("minute_origine").innerHTML;
-//     var secondes = document.getElementById("seconde_origine").innerHTML;
-//     var details = document.getElementById("details_alarme").value;
-//     document.getElementById("details_alarme").value ="";
-
-//     // ----ajout d'une div avec 'div1' comme classe, dans "alarmes_crees"
-//     var parent = document.getElementById('alarmes_crees')
-//     var div = document.createElement('div');
-//     div.className = "div1";
-//     div.innerHTML = heure + " : " + minutes + " : " + secondes ;
-//     parent.appendChild(div)
-
-
-
-
-//     // ----ajout message caché
-//     var message = document.createElement('p');
-//     message.className = "message_cache";
-//     message.innerHTML = details;
-//     parent.appendChild(message)
-// })
-
-
-
-
-var creer_alarme = document.getElementById("ajouter_alarme");
-console.log(document.getElementById("2"))
-
-creer_alarme.addEventListener('click', function(){
-
-    var heure = document.getElementById("heure_origine").innerHTML;
-    var minutes = document.getElementById("minute_origine").innerHTML;
-    var secondes = document.getElementById("seconde_origine").innerHTML;
-    var details = document.getElementById("details_alarme").value;
-    document.getElementById("details_alarme").value ="";
-
-    i=1
-    while(document.getElementById(""+i+"") != null)
-    {
-        i++
-        console.log('ici')
-    }
-
-    var parent = document.getElementById('alarmes_crees')
-    // ajout d'une div avec id dans la div parent
-    div_alarme_cree = document.createElement('div');
-    div_alarme_cree.setAttribute("id", ""+i+"");
-    div_alarme_cree.innerHTML = heure + " : " + minutes + " : " + secondes ;
-    parent.appendChild(div_alarme_cree)
-
-
-    var parent = document.getElementById(""+i+"")
-    // ajout d'éléments dans la div avec id créée au dessus 
-    p_details_utilisateur = document.createElement('p');
-    p_details_utilisateur.innerHTML = details
-    parent.appendChild(p_details_utilisateur)
-
-    compte_a_rebours = document.createElement('span');
-    compte_a_rebours.innerHTML = heure + " : " + minutes + " : " + secondes ;
-    parent.appendChild(compte_a_rebours)
-
 
 })
