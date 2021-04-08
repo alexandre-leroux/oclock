@@ -6,6 +6,7 @@ var date
 var alarme_parse
 var creer_alarme
 var decompte
+var message_alarme
 
 // -----------------------------------horloge
 function time(){
@@ -31,6 +32,9 @@ function time(){
 
         if(temps_restant <= 0)
         {
+            message_a_afficher = document.getElementById("message_cache"+i+"").innerHTML
+            document.getElementById("message_alarme").innerHTML = message_a_afficher
+            document.getElementById("alarme_sonne").removeAttribute("class")
             document.getElementById("div"+i+"").innerHTML = "00 : 00 : 00 alarme terminée"
             i++
         }
@@ -122,12 +126,18 @@ creer_alarme.addEventListener('click', function(){
     temps_milliseconde.setAttribute("style", "display: none");
     temps_milliseconde.innerHTML = alarme_parse
     parent.insertBefore(temps_milliseconde, parent.children[0]);
-
+    
+    message_cache = document.createElement('div');
+    message_cache.setAttribute("id", "message_cache"+i+"");
+    message_cache.setAttribute("style", "display: none");
+    message_input = document.getElementById("details_alarme").value
+    message_cache.innerHTML = message_input
+    parent.insertBefore(message_cache, parent.children[0]);
 
 
     new_alarme = document.createElement('div');
     new_alarme.setAttribute("id", "div"+i+"");
-    new_alarme.setAttribute("style", "font-size: 0.8rem");
+    new_alarme.setAttribute("style", "font-size: 0.7rem");
     new_alarme.setAttribute("style", "color: blue");
     new_alarme.innerHTML = decompte
     parent.insertBefore(new_alarme, parent.children[0]);

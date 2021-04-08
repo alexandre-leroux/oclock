@@ -60,7 +60,10 @@ font-size: 2rem;
 
 
  #alarme_sonne{
-
     font-size: 2rem;
     color: red;
+ }
+ .alarme_cachee{
+    display: none;
+
  }
