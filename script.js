@@ -28,19 +28,30 @@ function time(){
 
         date_parse = Date.parse(date)
         temps_restant = alarme_origine - date_parse
-    
-        seconde_restantes = Math.floor((temps_restant/1000)%60)
-    
-        minutes_restantes = Math.floor((temps_restant/1000/60)%60)
-    
-        heures_restantes = Math.floor((temps_restant/1000/60/60)%24)
-    
-        decompte = heures_restantes + " : " + minutes_restantes + " : " + seconde_restantes
 
-        document.getElementById("div"+i+"").innerHTML = ""
-        document.getElementById("div"+i+"").innerHTML = decompte
+        if(temps_restant <= 0)
+        {
+            document.getElementById("div"+i+"").innerHTML = "00 : 00 : 00 alarme terminée"
+            i++
+        }
+        else
+        {
 
-        i++
+            seconde_restantes = Math.floor((temps_restant/1000)%60)
+    
+            minutes_restantes = Math.floor((temps_restant/1000/60)%60)
+        
+            heures_restantes = Math.floor((temps_restant/1000/60/60)%24)
+        
+            decompte = heures_restantes + " : " + minutes_restantes + " : " + seconde_restantes
+    
+            document.getElementById("div"+i+"").innerHTML = ""
+            document.getElementById("div"+i+"").innerHTML = decompte
+    
+            i++
+        }
+    
+  
     }
 
 }
