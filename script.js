@@ -76,14 +76,6 @@ function time(){
         temps_restant_avant_alarme = heure_restantes + " : " + minutes_restantes + " : " + seconde_restantes
         
 
-  
-
-
-     
-
-
-
-
     }
     
 
@@ -92,7 +84,7 @@ function time(){
 }
 
 // lance une première fois la fonction pour ne pas avoir de page blanche pendant 1s
- time();
+time();
 
 // continue la fonction avec 1s d'interval
 setInterval( time, 1000)
@@ -256,34 +248,71 @@ boutton_down_secondes.addEventListener('click', function(){
 
 
 // -------------------------------------------------------boutton ajout alarme
+// var creer_alarme = document.getElementById("ajouter_alarme");
+
+// creer_alarme.addEventListener('click', function(){
+//     console.log('bouttton clicke')
+//     var heure = document.getElementById("heure_origine").innerHTML;
+//     var minutes = document.getElementById("minute_origine").innerHTML;
+//     var secondes = document.getElementById("seconde_origine").innerHTML;
+//     var details = document.getElementById("details_alarme").value;
+//     document.getElementById("details_alarme").value ="";
+
+//     // ----ajout d'une div avec 'div1' comme classe, dans "alarmes_crees"
+//     var parent = document.getElementById('alarmes_crees')
+//     var div = document.createElement('div');
+//     div.className = "div1";
+//     div.innerHTML = heure + " : " + minutes + " : " + secondes ;
+//     parent.appendChild(div)
+
+
+
+
+//     // ----ajout message caché
+//     var message = document.createElement('p');
+//     message.className = "message_cache";
+//     message.innerHTML = details;
+//     parent.appendChild(message)
+// })
+
+
+
+
 var creer_alarme = document.getElementById("ajouter_alarme");
+console.log(document.getElementById("2"))
 
 creer_alarme.addEventListener('click', function(){
-    console.log('bouttton clicke')
+
     var heure = document.getElementById("heure_origine").innerHTML;
     var minutes = document.getElementById("minute_origine").innerHTML;
     var secondes = document.getElementById("seconde_origine").innerHTML;
     var details = document.getElementById("details_alarme").value;
     document.getElementById("details_alarme").value ="";
 
-    // ----ajout d'une div avec 'div1' comme classe, dans "alarmes_crees"
+    i=1
+    while(document.getElementById(""+i+"") != null)
+    {
+        i++
+        console.log('ici')
+    }
+
     var parent = document.getElementById('alarmes_crees')
-    var div = document.createElement('div');
-    div.className = "div1";
-    div.innerHTML = heure + " : " + minutes + " : " + secondes ;
-    parent.appendChild(div)
+    // ajout d'une div avec id dans la div parent
+    div_alarme_cree = document.createElement('div');
+    div_alarme_cree.setAttribute("id", ""+i+"");
+    div_alarme_cree.innerHTML = heure + " : " + minutes + " : " + secondes ;
+    parent.appendChild(div_alarme_cree)
 
 
+    var parent = document.getElementById(""+i+"")
+    // ajout d'éléments dans la div avec id créée au dessus 
+    p_details_utilisateur = document.createElement('p');
+    p_details_utilisateur.innerHTML = details
+    parent.appendChild(p_details_utilisateur)
+
+    compte_a_rebours = document.createElement('span');
+    compte_a_rebours.innerHTML = heure + " : " + minutes + " : " + secondes ;
+    parent.appendChild(compte_a_rebours)
 
 
-    // ----ajout message caché
-    var message = document.createElement('p');
-    message.className = "message_cache";
-    message.innerHTML = details;
-    parent.appendChild(message)
 })
-
-
-
-
-
