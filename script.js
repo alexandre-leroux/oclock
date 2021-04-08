@@ -31,7 +31,7 @@ function time(){
             console.log(conteneur_alarme)
 
             alarme_decompte = conteneur_alarme.getElementsByTagName("span")
-            console.log(alarme_decompte[0].innerHTML)
+            // console.log(alarme_decompte[0].innerHTML)
 
             if(alarme_decompte[0].innerHTML == horloge)
             {
@@ -58,6 +58,28 @@ setInterval( time, 1000)
 
 
 
+
+
+function decompte_seconde(){
+
+    i=1
+    while(document.getElementById(""+i+"") != null)
+    {
+        if(document.getElementById(""+i+"") != null)
+        {
+            decompte_minutes = document.getElementById("secondes"+i+"").innerHTML
+            console.log(decompte_minutes)
+            minutes_int = parseInt(decompte_minutes)
+            document.getElementById("secondes"+i+"").innerHTML = --decompte_minutes
+
+        }
+        i++
+    }
+
+
+    
+}
+setInterval( decompte_seconde, 1000)
 
 
 // -------------------------------------------------------boutton ajout alarme
@@ -97,11 +119,20 @@ creer_alarme.addEventListener('click', function(){
     titre_decompte.innerHTML = "temps avant alarme : " ;
     parent.appendChild(titre_decompte)
 
-    compte_a_rebours = document.createElement('span');
-    compte_a_rebours.innerHTML = heure + " : " + minutes + " : " + secondes ;
-    parent.appendChild(compte_a_rebours)
-
-
+    compte_a_rebours_heures = document.createElement('span');
+    compte_a_rebours_heures.setAttribute('id', 'heures')
+    compte_a_rebours_heures.innerHTML = heure 
+    parent.appendChild(compte_a_rebours_heures)
+    
+    compte_a_rebours_minutes = document.createElement('span');
+    compte_a_rebours_minutes.setAttribute('id', "minutes"+i+"")
+    compte_a_rebours_minutes.innerHTML =  minutes 
+    parent.appendChild(compte_a_rebours_minutes)
+    
+    compte_a_rebours_secondes = document.createElement('span');
+    compte_a_rebours_secondes.setAttribute('id', "secondes"+i+"")
+    compte_a_rebours_secondes.innerHTML = secondes ;
+    parent.appendChild(compte_a_rebours_secondes)
 })
 
 
