@@ -56,3 +56,11 @@ font-size: 2rem;
  .message_apparait{
      display: block;
  }
+
+
+
+ #alarme_sonne{
+
+    font-size: 2rem;
+    color: red;
+ }

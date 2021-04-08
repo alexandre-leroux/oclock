@@ -35,7 +35,14 @@ function time(){
 
             if(alarme_decompte[0].innerHTML == horloge)
             {
-                alert('alarme')
+                parent = document.getElementById('main')
+                console.log(parent)
+                div_alarme = document.createElement('div');
+                div_alarme.setAttribute('id', 'alarme_sonne')
+                div_alarme.innerHTML = "ALARME"
+                // parent.appendChild(div_alarme)
+
+                parent.insertBefore(div_alarme, parent.children[1]);
             }
 
         }
