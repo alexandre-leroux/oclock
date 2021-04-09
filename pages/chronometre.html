@@ -18,42 +18,40 @@
         <a href="../index.html">HORLOGE</a>
     </header>
 
-<div id="alarme_sonne" style="display: none" class='animate__animated animate__flash '>TEMPS ÉCOULÉ</div>
 
 
 
 
 <div id="conteneur_compteur">
-    <h1>AJOUTER UN MINUTEUR</h1>
+    <h1>CHRONOMETRE</h1>
+    <button id="reset_chrono">RESET</button>
+
     <div id="compteur_pour_choix">
         <div class="compteur">
             <h2>heures</h2>
-            <img id="ajouter_heure" src="../media/566000-navigation/png/014-up-chevron.png" alt="">
-            <p id="heure_origine">1</p>
-            <img id="enlever_heure" src="../media/566000-navigation/png/013-down-chevron.png" alt="">
+            <p id="heure_origine">0</p>
         </div>
-    
+        <p>:</p>
         <div class="compteur">
             <h2>minutes</h2>
-            <img id="ajouter_minute" src="../media/566000-navigation/png/014-up-chevron.png" alt="">
-            <p id="minute_origine">59</p>
-            <img id="enlever_minute" src="../media/566000-navigation/png/013-down-chevron.png" alt="">
+            <p id="minute_origine">0</p>
         </div>
+        <p>:</p>
     
         <div class="compteur">
             <h2>secondes</h2>
-            <img id="ajouter_seconde" src="../media/566000-navigation/png/014-up-chevron.png" alt="">
-            <p id="seconde_origine">58</p>
-            <img id="enlever_seconde" src="../media/566000-navigation/png/013-down-chevron.png" alt="">
+            <p id="seconde_origine">0</p>
         </div>
     </div>
 
 
         <button id="demarrer_pause_chrono">DEMARRER / PAUSE</button>
+        <button id="temps_intermediaire">TEMPS INTERMEDIAIRE</button>
 
 
 </div>
 
+<div id="conteneur_temps_intermediare"></div>
 
 
 

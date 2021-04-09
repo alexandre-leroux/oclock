@@ -6,10 +6,22 @@ body{
     height: 100vh;
     width: 100vw;
 }
+header{
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30vw;
+}
+header a{
+text-decoration: none;
+color: rgb(46, 112, 90);
+font-size: 1.2rem;
+}
 #main{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     height: 100vh;
 }
@@ -28,14 +40,19 @@ body{
     flex-direction: column;
     padding: 10px;
     color: rgb(62, 119, 121);
-    border-top: 1px solid rgb(211, 211, 211);
     width: 40vw;
     padding-top: 20px;
+    margin-top: 30vh;
 
 }
 #compteur_pour_choix{
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 10px;
+}
+#compteur_pour_choix p{
+font-size: 5rem;
 }
 #conteneur_compteur input{
    height: 20px;
@@ -43,7 +60,13 @@ body{
 #ajouter_alarme{
     margin-bottom: 50px;
 }
+h1{
+    margin: 20px
+}
 
+#demarrer_pause_chrono, #reset_chrono{
+    margin: 15px;
+}
 .compteur{
     /* background-color: aquamarine; */
     width: 120px;
