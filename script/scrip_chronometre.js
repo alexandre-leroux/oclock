@@ -4,86 +4,147 @@ var temps_au_moment_click
 var temps_minuteur_voulu
 var temps_minuteur_voulu
 var temps_minuteur_voulu_parse
+var temps_au_moment_click_parse
+var demarrer_pause = 0
 // -------------------------------------------------------boutton ajout alarme
 
 lancer_chrono = document.getElementById("demarrer_pause_chrono");
 
-lancer_minuteur.addEventListener('click', function(){
+lancer_chrono.addEventListener('click', function(){
 
     temps_au_moment_click = new Date();
-    temps_minuteur_voulu = new Date();
 
-    heure_du_click = temps_au_moment_click.getHours()
-    minutes_du_click = temps_au_moment_click.getMinutes()
-    secondes_du_click = temps_au_moment_click.getSeconds()
+    // demarrer_pause = 0
+    // console.log("avant if" +demarrer_pause)
 
-    heure_a_ajouter = parseInt(document.getElementById("heure_origine").innerHTML) * 3600000
+    if(demarrer_pause == 0)
+    {
+        ++demarrer_pause
+        // console.log(demarrer_pause)
+
+
+        temps_au_moment_click = new Date();
+        temps_au_moment_click_parse = Date.parse(temps_au_moment_click)
+
+        // console.log(temps_au_moment_click_parse)
+
+        return demarrer_pause
+    }
+    else
+    {
+        --demarrer_pause
+        // console.log(demarrer_pause)
+        temps_au_moment_click_parse = "vide"
+
+    }
+    // temps_minuteur_voulu = new Date();
+
+    // heure_du_click = temps_au_moment_click.getHours()
+    // minutes_du_click = temps_au_moment_click.getMinutes()
+    // secondes_du_click = temps_au_moment_click.getSeconds()
+
+    // heure_a_ajouter = parseInt(document.getElementById("heure_origine").innerHTML) * 3600000
     
-    minutes_a_ajouter = parseInt(document.getElementById("minute_origine").innerHTML) * 60000
+    // minutes_a_ajouter = parseInt(document.getElementById("minute_origine").innerHTML) * 60000
     
-    secondes_a_ajouter = parseInt(document.getElementById("seconde_origine").innerHTML) * 1000
+    // secondes_a_ajouter = parseInt(document.getElementById("seconde_origine").innerHTML) * 1000
 
-    temps_minuteur_voulu_parse = Date.parse(temps_minuteur_voulu) + heure_a_ajouter + minutes_a_ajouter + secondes_a_ajouter
+    // temps_minuteur_voulu_parse = Date.parse(temps_minuteur_voulu) + heure_a_ajouter + minutes_a_ajouter + secondes_a_ajouter
 
 
 })
 
-
-function minuteur(){
+minutes_origine = document.getElementById("minute_origine").innerHTML 
+function chronometre(){
 
     temps_actuel = new Date()
 
     temps_actuel_parse = Date.parse(temps_actuel)
 
-    temps_minuteur_voulu_parse 
-
-    temps_restant = temps_minuteur_voulu_parse - temps_actuel_parse
-    console.log(temps_restant)
 
 
-    seconde_restantes = Math.floor((temps_restant/1000)%60)
+    temps_ecoule = temps_actuel_parse - temps_au_moment_click_parse 
 
-    minutes_restantes = Math.floor((temps_restant/1000/60)%60)
 
-    heures_restantes = Math.floor((temps_restant/1000/60/60)%24)
+    // console.log(temps_ecoule)
+// test_si_number =  Number.isInteger(temps_au_moment_click_parse)
+if(Number.isInteger(temps_au_moment_click_parse))
+{
+    // seconde_ecoulees = Math.floor((temps_ecoule/1000)%2)
+    // seconde_ecoulees_parse = parseInt(seconde_ecoulees)
+    // console.log(seconde_ecoulees_parse)
 
-    console.log(seconde_restantes)
-    console.log(minutes_restantes)
-    console.log(heures_restantes)
+    minutes_ecoulees = Math.floor((temps_ecoule/1000/60)%60)
+    minutes_ecoulees_int = parseInt(minutes_ecoulees,10)
+    console.log(minutes_ecoulees_int)
 
-    if(isNaN(temps_restant))
-    {
-        console.log('dans if')
-    }
-    else{
-        console.log('dans else')
+    heures_ecoulees = Math.floor((temps_ecoule/1000/60/60)%24)
+    
+    // console.log(seconde_ecoulees_parse)
+    // console.log(minutes_ecoulees)
+    // console.log(heures_ecoulees)
 
-        if(temps_minuteur_voulu_parse <= temps_actuel_parse)
-        {
-            document.getElementById("seconde_origine").innerHTML =0
-            document.getElementById("minute_origine").innerHTML =0
-            document.getElementById("heure_origine").innerHTML =0
-            alarme = document.getElementById("alarme_sonne")
-            alarme.removeAttribute('style')
-        
+    // if(isNaN(temps_restant))
+    // {
+    //     // console.log('dans if')
+    // }
+    // else{
+    //     // console.log('dans else')
 
-        }
-        else
-        {
+    //     if(temps_minuteur_voulu_parse <= temps_actuel_parse)
+    //     {
+            secondes_a_afficher = document.getElementById("seconde_origine").innerHTML 
+            secondes_a_afficher_parse = parseInt(secondes_a_afficher,10)
+            document.getElementById("seconde_origine").innerHTML  = ""
+            secondes_finales = (secondes_a_afficher_parse + 1)%60
+            document.getElementById("seconde_origine").innerHTML  = secondes_finales
 
-            document.getElementById("heure_origine").innerHTML =""
-            document.getElementById("heure_origine").innerHTML = heures_restantes
-            document.getElementById("minute_origine").innerHTML =""
-            document.getElementById("minute_origine").innerHTML = minutes_restantes
-            document.getElementById("seconde_origine").innerHTML =""
-            document.getElementById("seconde_origine").innerHTML = seconde_restantes
-        }
-    }
+            if(document.getElementById("seconde_origine").innerHTML == 0)
+            {
+                document.getElementById("minute_origine").innerHTML  = 0
+            }
+
+            // console.log(minutes_origine)
+            // minutes_origine_int = parseInt(minutes_origine,10)
+
+            // console.log(Number.isInteger(minutes_origine_int))
+            // console.log(Number.isInteger(minutes_ecoulees_int))
+            // document.getElementById("minute_origine").innerHTML  = ""
+            // minutes_finales = minutes_origine_int + minutes_ecoulees_int
+            // document.getElementById("minute_origine").innerHTML  = minutes_finales
+
+
+
+
+            document.getElementById("heure_origine").innerHTML 
+
+}
+else{
 
 
 }
 
-setInterval(minuteur,1000)
+    //         alarme = document.getElementById("alarme_sonne")
+    //         alarme.removeAttribute('style')
+        
+
+    //     }
+    //     else
+    //     {
+
+    //         document.getElementById("heure_origine").innerHTML =""
+    //         document.getElementById("heure_origine").innerHTML = heures_restantes
+    //         document.getElementById("minute_origine").innerHTML =""
+    //         document.getElementById("minute_origine").innerHTML = minutes_restantes
+    //         document.getElementById("seconde_origine").innerHTML =""
+    //         document.getElementById("seconde_origine").innerHTML = seconde_restantes
+    //     }
+    // }
+
+
+}
+
+setInterval(chronometre,1000)
 
 
 
