@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="style/style_horloge.css" />
+    <link rel="stylesheet" href="../style/style_chronometre.css" />
     <title>OCLOCK</title>
 </head>
 
@@ -18,38 +18,40 @@
         <a href="../index.html">HORLOGE</a>
     </header>
 
-<div id="alarme_sonne" style="display: none" class='animate__animated animate__flash '>ALARME</div>
-<div id="message_alarme"></div>
+<div id="alarme_sonne" style="display: none" class='animate__animated animate__flash '>TEMPS ÉCOULÉ</div>
 
-<div id="heure"></div>
+
+
 
 <div id="conteneur_compteur">
-    <h1>AJOUTER UNE ALARME</h1>
+    <h1>AJOUTER UN MINUTEUR</h1>
     <div id="compteur_pour_choix">
         <div class="compteur">
-            <img id="ajouter_heure" src="media/566000-navigation/png/014-up-chevron.png" alt="">
-            <p id="heure_origine">20</p>
-            <img id="enlever_heure" src="media/566000-navigation/png/013-down-chevron.png" alt="">
+            <h2>heures</h2>
+            <img id="ajouter_heure" src="../media/566000-navigation/png/014-up-chevron.png" alt="">
+            <p id="heure_origine">1</p>
+            <img id="enlever_heure" src="../media/566000-navigation/png/013-down-chevron.png" alt="">
         </div>
     
         <div class="compteur">
-            <img id="ajouter_minute" src="media/566000-navigation/png/014-up-chevron.png" alt="">
-            <p id="minute_origine">32</p>
-            <img id="enlever_minute" src="media/566000-navigation/png/013-down-chevron.png" alt="">
+            <h2>minutes</h2>
+            <img id="ajouter_minute" src="../media/566000-navigation/png/014-up-chevron.png" alt="">
+            <p id="minute_origine">22</p>
+            <img id="enlever_minute" src="../media/566000-navigation/png/013-down-chevron.png" alt="">
         </div>
     
         <div class="compteur">
-            <img id="ajouter_seconde" src="media/566000-navigation/png/014-up-chevron.png" alt="">
-            <p id="seconde_origine">23</p>
-            <img id="enlever_seconde" src="media/566000-navigation/png/013-down-chevron.png" alt="">
+            <h2>secondes</h2>
+            <img id="ajouter_seconde" src="../media/566000-navigation/png/014-up-chevron.png" alt="">
+            <p id="seconde_origine">3</p>
+            <img id="enlever_seconde" src="../media/566000-navigation/png/013-down-chevron.png" alt="">
         </div>
     </div>
-    <label for="details_alarme">détails de l'alarme :</label>
-    <input type="text" id="details_alarme" name="details_alarme" >
 
-        <button id="ajouter_alarme">ajouter alarme</button>
 
-     <p>LISTE DES PROCHAINES ALARMES :</p>   
+        <button id="demarrer_pause_chrono">DEMARRER / PAUSE</button>
+
+
 </div>
 
 
@@ -74,7 +76,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src='script/scrip_horloge_alarme.js'></script>
+  <script src='../script/scrip_chronometre.js'></script>
 
 </main>
 
